@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Intersection Observer for scroll animations
     const scrollObserverOptions = {
         threshold: 0.2,
-        rootMargin: '-150px 0px -50px 0px'
+        rootMargin: '0px 0px -20px 0px'
     };
 
     // Special options for about section

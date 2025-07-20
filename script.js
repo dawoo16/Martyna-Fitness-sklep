@@ -66,15 +66,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { ...scrollObserverOptions, threshold: 0.5 });
 
     // Observe elements
-    animatedSections.forEach(section => sectionObserver.observe(section));
-    if (aboutSection) {
-        aboutObserver.observe(aboutSection);
+    animatedSections.forEach(section => {
+    sectionObserver.observe(section);
 
-        // FIX: Force visible if already in viewport on load (especially mobile)
-        if (aboutSection.getBoundingClientRect().top < window.innerHeight) {
-            aboutSection.classList.add('visible');
-        }
+    // Awaryjne uaktywnienie, jeśli już w widoku (np. mobile)
+    if (section.getBoundingClientRect().top < window.innerHeight) {
+        section.classList.add('visible');
     }
+});
+
+if (aboutSection) {
+    aboutObserver.observe(aboutSection);
+
+    if (aboutSection.getBoundingClientRect().top < window.innerHeight) {
+        aboutSection.classList.add('visible');
+    }
+}
     animatedContent.forEach(content => contentObserver.observe(content));
     // Nowa linia — dodaj cta-buttons do obserwatora
     document.querySelectorAll('.cta-buttons').forEach(buttons => contentObserver.observe(buttons));
